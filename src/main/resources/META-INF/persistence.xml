@@ -6,8 +6,14 @@
 	<persistence-unit name="demosafetyfood"
 		transaction-type="JTA">
 		<jta-data-source>java:/websv61DS</jta-data-source>
+		<class>pe.edu.upc.entities.Tipocertificado</class>
+		<class>pe.edu.upc.entities.Distrito</class>
 		<class>pe.edu.upc.entities.Tipousuario</class>
-			<class>pe.edu.upc.entities.Carta</class>
+		<class>pe.edu.upc.entities.Departamento</class>
+		<class>pe.edu.upc.entities.Tiporestaurante</class>
+		<class>pe.edu.upc.entities.Oferta</class>
+		<class>pe.edu.upc.entities.Carta</class>
+		<class>pe.edu.upc.entities.Restaurante</class>
 		<properties>
 
 			<property
