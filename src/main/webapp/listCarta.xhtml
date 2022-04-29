@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Lista de los platillos de la carta</h2>
+		<h:form>
+			<p:dataTable id="lstCarta"
+				value="#{cartaController.listaCartas}"
+				var="ca" paginator="true" paginatorPosition="top"
+				rowPerPageTemplate="5,10,15,20,25" rows="5" rowIndexVar="item"
+				emptyMessage="No existen personas en la base de datos!!">
+				<p:column headerText="Id">
+					<h:outputText value="#{ca.idCarta}" />
+				</p:column>
+
+				<p:column headerText="Nombre del platillo:">
+					<h:outputText value="#{ca.nombrecarta}" />
+				</p:column>
+				
+				<p:column headerText="Precio del platillo">
+					<h:outputText value="#{ca.preciocarta}" />
+				</p:column>
+				
+				<p:column headerText="Imagen del platillo">
+					<h:outputText value="#{ca.imagencarta}" />
+				</p:column>
+
+				<p:column headerText="Operación">
+					<h:commandLink action="listCarta" value="Eliminar"
+						actionListener="#{cartaController.delete(ca)}" />
+				</p:column>
+
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

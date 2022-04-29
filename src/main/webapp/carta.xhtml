@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/master.xhtml">
+	<ui:define name="content">
+		<h2>Agregar platillos a la carta</h2>
+
+		<p:commandButton value="Ver lista de la carta del restaurante"
+			action="listCarta?faces-redirect=true"></p:commandButton>
+
+		<h:form>
+			<h:outputLabel value="Id" for="id" styleClass="control-label" />
+			<h:inputText value="#{cartaController.ca.idCarta}" id="id"
+				styleClass="form-control" />
+
+			<h:outputLabel value="Nombre del platillo:" for="nombrecarta"
+				styleClass="control-label" />
+			<h:inputText value="#{cartaController.ca.nombrecarta}"
+				id="nombrecarta" styleClass="form-control" />
+
+			<h:outputLabel value="Precio del platillo:" for="preciocarta"
+				styleClass="control-label" />
+			<h:inputText value="#{cartaController.ca.preciocarta}"
+				id="preciocarta" styleClass="form-control" />
+
+			<h:outputLabel value="Imagen del platillo:" for="imagencarta"
+				styleClass="control-label" />
+			<h:inputText value="#{cartaController.ca.imagencarta}"
+				id="imagencarta" styleClass="form-control" />
+
+
+
+			<p:commandButton value="Grabar"
+				actionListener="#{cartaController.insert()}"
+				action="carta?faces-redirect=true"></p:commandButton>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+</html>
