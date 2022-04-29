@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+
+
+	<ui:define name="content">
+
+		<h2>Registro de vacunación</h2>
+		<h:form>
+
+			<h:outputLabel value="Código de restaurante" for="id"
+				styleClass="control-label" />
+			<p:inputText value="#{restauranteController.re.idRestaurante}"
+				id="id" styleClass="form-control"></p:inputText>
+			<br />
+			<h:outputLabel value="Tipo certificado:" for="cboTipocertificado"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboTipocertificado"
+				value="#{restauranteController.re.tipocertificado}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems
+					value="#{restauranteController.listaTipocertificados}" var="t"
+					itemLabel="#{t.nombretipocertificado}" itemValue="#{t}" />
+			</p:selectOneMenu>
+			<br />
+
+			<h:outputLabel value="Tipo restaurante:" for="cboTiporestaurante"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboTiporestaurante"
+				value="#{restauranteController.re.tiporestaurante}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems
+					value="#{restauranteController.listaTiporestaurantes}" var="tr"
+					itemLabel="#{tr.tiporestaurante}" itemValue="#{tr}" />
+			</p:selectOneMenu>
+			<br />
+
+			<h:outputLabel value="Distrito:" for="cboDistrito"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboDistrito"
+				value="#{restauranteController.re.distrito}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{restauranteController.listaDistritos}"
+					var="di" itemLabel="#{di.nombredistrito}" itemValue="#{di}" />
+			</p:selectOneMenu>
+			<br />
+
+			<h:outputLabel value="Departamento:" for="cboDepartamento"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboDepartamento"
+				value="#{restauranteController.re.departamento}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{restauranteController.listaDepartamentos}"
+					var="de" itemLabel="#{de.nombredepartamento}" itemValue="#{de}" />
+			</p:selectOneMenu>
+			<br />
+
+			<h:outputLabel value="Oferta:" for="cboOferta"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboOferta"
+				value="#{restauranteController.re.oferta}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{restauranteController.listaOfertas}"
+					var="p" itemLabel="#{p.nombreoferta}" itemValue="#{p}" />
+			</p:selectOneMenu>
+			<br />
+
+			<p:commandButton value="Grabar"
+				actionListener="#{restauranteController.insert()}"
+				action="listRestaurante?faces-redirect=true" update="@form" />
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
