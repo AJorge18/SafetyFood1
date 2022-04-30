@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Lista de tipos de certificado</h2>
+		<h:form>
+			<p:dataTable id="lstTipocertificado"
+				value="#{tipocertificadoController.listaTipocertificados}"
+				var="pe" paginator="true" paginatorPosition="top"
+				rowPerPageTemplate="5,10,15,20,25" rows="5" rowIndexVar="item"
+				emptyMessage="No existen personas en la base de datos!!">
+				<p:column headerText="Id">
+					<h:outputText value="#{pe.idTipocertificado}" />
+				</p:column>
+
+				<p:column headerText="Ingrese el tipo del restaurante">
+					<h:outputText value="#{pe.tipocertificado}" />
+				</p:column>
+				
+					<p:column headerText="Ingrese el enalce">
+					<h:outputText value="#{pe.nombretipocertificado}" />
+				</p:column>
+
+				<p:column headerText="Operación">
+					<h:commandLink action="listTipocertificado" value="Eliminar"
+						actionListener="#{tipocertificadoController.delete(pe)}" />
+				</p:column>
+
+
+
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

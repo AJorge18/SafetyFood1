@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/master.xhtml">
+	<ui:define name="content">
+		<h2>Agregar oferta del menu</h2>
+
+		<p:commandButton value="Ver lista de las ofertas"
+			action="listOferta?faces-redirect=true"></p:commandButton>
+
+		<h:form>
+			<h:outputLabel value="Id" for="id" styleClass="control-label" />
+			<h:inputText value="#{ofertaController.o.idOferta}" id="id"
+				styleClass="form-control" />
+
+			<h:outputLabel value="Nombre del platillo en oferta: " for="nombre"
+				styleClass="control-label" />
+			<h:inputText value="#{ofertaController.o.nombreoferta}" id="nombre"
+				styleClass="form-control" />
+
+			<h:outputLabel value="Precio antes: " for="precioantes"
+				styleClass="control-label" />
+			<h:inputText value="#{ofertaController.o.precioantes}"
+				id="precioantes" styleClass="form-control" />
+
+			<h:outputLabel value="Precio actual: " for="precioactual"
+				styleClass="control-label" />
+			<h:inputText value="#{ofertaController.o.precioactual}"
+				id="precioactual" styleClass="form-control" />
+
+			<h:outputLabel value="Imagen del platillo en oferta: " for="imagenoferta"
+				styleClass="control-label" />
+			<h:inputText value="#{ofertaController.o.imagenoferta}"
+				id="imagenoferta" styleClass="form-control" />
+
+			<p:commandButton value="Grabar"
+				actionListener="#{ofertaController.insert()}"
+				action="oferta?faces-redirect=true"></p:commandButton>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+</html>
