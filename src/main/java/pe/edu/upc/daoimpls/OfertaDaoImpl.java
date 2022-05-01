@@ -12,7 +12,7 @@ import pe.edu.upc.daointerfaces.IOfertaDao;
 import pe.edu.upc.entities.Oferta;
 
 public class OfertaDaoImpl implements IOfertaDao {
-	@PersistenceContext(unitName = "demosafetyfood")
+	@PersistenceContext(unitName = "SafetyFood1")
 	private EntityManager em;
 
 	@Transactional

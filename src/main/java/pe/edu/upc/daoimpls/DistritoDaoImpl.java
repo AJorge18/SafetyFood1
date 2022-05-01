@@ -12,7 +12,7 @@ import pe.edu.upc.daointerfaces.IDistritoDao;
 import pe.edu.upc.entities.Distrito;
 
 public class DistritoDaoImpl implements IDistritoDao {
-	@PersistenceContext(unitName = "demosafetyfood")
+	@PersistenceContext(unitName = "SafetyFood1")
 	private EntityManager em;
 
 	@Transactional

@@ -12,7 +12,7 @@ import pe.edu.upc.daointerfaces.ITipousuarioDao;
 import pe.edu.upc.entities.Tipousuario;
 
 public class TipousuarioDaoImpl implements ITipousuarioDao {
-	@PersistenceContext(unitName = "demosafetyfood")
+	@PersistenceContext(unitName = "SafetyFood1")
 	private EntityManager em;
 
 	@Transactional
