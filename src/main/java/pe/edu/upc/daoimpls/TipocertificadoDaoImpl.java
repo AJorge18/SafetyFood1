@@ -12,7 +12,7 @@ import pe.edu.upc.daointerfaces.ITipocertificadoDao;
 import pe.edu.upc.entities.Tipocertificado;
 
 public class TipocertificadoDaoImpl implements ITipocertificadoDao {
-	@PersistenceContext(unitName = "demosafetyfood")
+	@PersistenceContext(unitName = "SafetyFood1")
 	private EntityManager em;
 
 	@Transactional

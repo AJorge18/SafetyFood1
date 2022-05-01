@@ -12,7 +12,7 @@ import pe.edu.upc.daointerfaces.ICartaDao;
 import pe.edu.upc.entities.Carta;
 
 public class CartaDaoImpl implements ICartaDao {
-	@PersistenceContext(unitName = "demosafetyfood")
+	@PersistenceContext(unitName = "SafetyFood1")
 	private EntityManager em;
 
 	@Transactional

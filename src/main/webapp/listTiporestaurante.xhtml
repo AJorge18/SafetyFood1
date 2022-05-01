@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Lista de tipos de restaurante</h2>
+		<h:form>
+			<p:dataTable id="lstTiporestaurante"
+				value="#{tiporestauranteController.listaTiporestaurantes}"
+				var="tr" paginator="true" paginatorPosition="top"
+				rowPerPageTemplate="5,10,15,20,25" rows="5" rowIndexVar="item"
+				emptyMessage="No existen personas en la base de datos!!">
+				<p:column headerText="Id">
+					<h:outputText value="#{tr.idTiporestaurante}" />
+				</p:column>
+
+				<p:column headerText="Ingrese el tipo del restaurante">
+					<h:outputText value="#{tr.tiporestaurante}" />
+				</p:column>
+
+				<p:column headerText="Operación">
+					<h:commandLink action="listTiporestaurante" value="Eliminar"
+						actionListener="#{tiporestauranteController.delete(tr)}" />
+				</p:column>
+
+
+
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
