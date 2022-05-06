@@ -12,7 +12,7 @@ import pe.edu.upc.daointerfaces.IDepartamentoDao;
 import pe.edu.upc.entities.Departamento;
 
 public class DepartamentoDaoImpl implements IDepartamentoDao {
-	@PersistenceContext(unitName = "SafetyFood1")
+	@PersistenceContext(unitName = "demosafetyfood")
 	private EntityManager em;
 
 	@Transactional
@@ -45,7 +45,7 @@ public class DepartamentoDaoImpl implements IDepartamentoDao {
 			Departamento dep = em.find(Departamento.class, idDepartamento);
 			em.remove(dep);
 		} catch (Exception e) {
-			System.out.println("Error al eliminar en el dao de persona");
+			System.out.println("Error al eliminar en el dao de departamento");
 		}
 
 	}

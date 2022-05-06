@@ -5,12 +5,12 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="master.xhtml">
+<ui:composition template="masterrestaurante.xhtml">
 
 
 	<ui:define name="content">
 
-		<h2>Registro de restaurante</h2>
+		<h2>Modificacion de restaurante</h2>
 
 		<h:form>
 
@@ -19,7 +19,7 @@
 			<p:inputText value="#{restauranteController.re.idRestaurante}"
 				id="id" styleClass="form-control"></p:inputText>
 			<br />
-			<h:outputLabel value="Tipo restaurante:ㅤ" for="cboTiporestaurante"
+			<h:outputLabel value="Tiporestaurante:ㅤ" for="cboTiporestaurante"
 				styleClass="control-label" />
 			<p:selectOneMenu id="cboTiporestaurante"
 				value="#{restauranteController.re.tiporestaurante}"
@@ -29,7 +29,7 @@
 					itemLabel="#{tr.tiporestaurante}" itemValue="#{tr}" />
 			</p:selectOneMenu>
 			<br />
-			<h:outputLabel value="Certificado min salud:ㅤ"
+			<h:outputLabel value="Certificado:ㅤ"
 				for="cboTipocertificado" styleClass="control-label" />
 			<p:selectOneMenu id="cboTipocertificado"
 				value="#{restauranteController.re.tipocertificado}"
@@ -101,8 +101,8 @@
 			</p:selectOneMenu>
 			<br />
 			<br />
-			<p:commandButton value="Grabar"
-				actionListener="#{restauranteController.insert()}"
+			<p:commandButton value="Actualizar"
+				actionListener="#{restauranteController.update()}"
 				action="listRestaurante?faces-redirect=true" update="@form"
 				styleClass="btn btn-primary" />
 		</h:form>

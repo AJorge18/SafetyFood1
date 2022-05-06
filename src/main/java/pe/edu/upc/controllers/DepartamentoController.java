@@ -57,7 +57,7 @@ public class DepartamentoController {
 			deService.delete(depa.getIdDepartamento());
 			this.list();
 		} catch (Exception e) {
-			System.out.println("Error al eliminar en el controller de persona");
+			System.out.println("Error al eliminar en el controller de departamento");
 		}
 	}
 
