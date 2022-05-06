@@ -23,7 +23,7 @@ public class RestauranteDaoImpl implements IRestauranteDao {
 		try {
 			em.persist(re);
 		} catch (Exception e) {
-			System.out.println("Error al insertar vacunación en el DAO");
+			System.out.println("Error al insertar restaurante en el DAO");
 		}
 
 	}
@@ -33,7 +33,7 @@ public class RestauranteDaoImpl implements IRestauranteDao {
 	public List<Restaurante> list() {
 		List<Restaurante> listaRestaurantes = new ArrayList<Restaurante>();
 		try {
-			Query jqpl = em.createQuery("from Restaurante va");
+			Query jqpl = em.createQuery("from Restaurante re");
 			listaRestaurantes = jqpl.getResultList();
 		} catch (Exception e) {
 			System.out.println("Error al listar restaurante en el DAO");
@@ -41,6 +41,21 @@ public class RestauranteDaoImpl implements IRestauranteDao {
 		return listaRestaurantes;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Restaurante> findByName(Restaurante re) {
+		List<Restaurante> listaBuscada = new ArrayList<Restaurante>();
+		try {
+			Query q = em.createQuery("from Restaurante re where re.nombrerestaurante like ?1");
+			q.setParameter(1, "%" + re.getNombrerestaurante() + "%");
+			listaBuscada = (List<Restaurante>) q.getResultList();
+		} catch (Exception e) {
+			System.out.println("Error al buscar restaurante");
+		}
+		return listaBuscada;
+	}
+	
+	
 	@Transactional
 	@Override
 	public void delete(int idRestaurante) {
@@ -49,9 +64,19 @@ public class RestauranteDaoImpl implements IRestauranteDao {
 			em.remove(re);
 		} catch (Exception e) {
 
-			System.out.println("Error al eliminar en el dao");
+			System.out.println("Error al eliminar en el restaurante dao");
 		}
 	}
-	
 
+	@Transactional
+	@Override
+	public void update(Restaurante re) {
+		try {
+			em.merge(re);
+		} catch (Exception e) {
+			System.out.println("Error al modificar restaurante en el dao");
+		}
+}
+	
+	
 }

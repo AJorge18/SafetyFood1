@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/masterrestaurante.xhtml">
+	<ui:define name="content">
+		<h2>Modificar empleado</h2>
+
+		<h:form>
+			<h:outputLabel value="Id" for="id" styleClass="control-label" />
+			<h:inputText value="#{empleadoController.ep.idEmpleado}" id="id"
+				styleClass="form-control" />
+
+			<h:outputLabel value="Restaurante:ㅤ" for="cboRestaurante"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboRestaurante"
+				value="#{empleadoController.ep.restaurante}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{empleadoController.listaRestaurantes}"
+					var="re" itemLabel="#{re.nombrerestaurante}" itemValue="#{re}" />
+			</p:selectOneMenu>
+			<br />
+
+			<h:outputLabel value="Certificado:ㅤ" for="cboTipocertificado"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboTipocertificado"
+				value="#{empleadoController.ep.tipocertificado}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{empleadoController.listaTipocertificados}"
+					var="t" itemLabel="#{t.nombretipocertificado}" itemValue="#{t}" />
+			</p:selectOneMenu>
+			<br />
+
+			<h:outputLabel value="Nombre del empleado: " for="nombreempleado"
+				styleClass="control-label" />
+			<h:inputText value="#{empleadoController.ep.nombreempleado}"
+				id="nombreempleado" styleClass="form-control" />
+
+			<h:outputLabel value="Apellido del empleado: " for="apellidoempleado"
+				styleClass="control-label" />
+			<h:inputText value="#{empleadoController.ep.apellidoempleado}"
+				id="apellidoempleado" styleClass="form-control" />
+
+			<h:outputLabel value="Dni del empleado: " for="dniempleado"
+				styleClass="control-label" />
+			<h:inputText value="#{empleadoController.ep.dniempleado}"
+				id="dniempleado" styleClass="form-control" />
+
+			<h:outputLabel value="Correo del empleado: " for="correoempleado"
+				styleClass="control-label" />
+			<h:inputText value="#{empleadoController.ep.correoempleado}"
+				id="correoempleado" styleClass="form-control" />
+
+
+			<p:commandButton value="Actualizar"
+				actionListener="#{empleadoController.update()}"
+				action="listEmpleado?faces-redirect=true" update="@form"
+				styleClass="btn btn-primary" />
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>
+</html>

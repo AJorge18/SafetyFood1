@@ -10,26 +10,16 @@
 
 	<ui:define name="content">
 
-		<h2>Registro de vacunación</h2>
+		<h2>Registro de restaurante</h2>
+
 		<h:form>
 
-			<h:outputLabel value="Código de restaurante" for="id"
+			<h:outputLabel value="Id" for="id"
 				styleClass="control-label" />
 			<p:inputText value="#{restauranteController.re.idRestaurante}"
 				id="id" styleClass="form-control"></p:inputText>
 			<br />
-			<h:outputLabel value="Tipo certificado:" for="cboTipocertificado"
-				styleClass="control-label" />
-			<p:selectOneMenu id="cboTipocertificado"
-				value="#{restauranteController.re.tipocertificado}"
-				converter="omnifaces.SelectItemsConverter">
-				<f:selectItems
-					value="#{restauranteController.listaTipocertificados}" var="t"
-					itemLabel="#{t.nombretipocertificado}" itemValue="#{t}" />
-			</p:selectOneMenu>
-			<br />
-
-			<h:outputLabel value="Tipo restaurante:" for="cboTiporestaurante"
+			<h:outputLabel value="Tipo restaurante:ㅤ" for="cboTiporestaurante"
 				styleClass="control-label" />
 			<p:selectOneMenu id="cboTiporestaurante"
 				value="#{restauranteController.re.tiporestaurante}"
@@ -39,8 +29,20 @@
 					itemLabel="#{tr.tiporestaurante}" itemValue="#{tr}" />
 			</p:selectOneMenu>
 			<br />
+			<h:outputLabel value="Certificado min salud:ㅤ"
+				for="cboTipocertificado" styleClass="control-label" />
+			<p:selectOneMenu id="cboTipocertificado"
+				value="#{restauranteController.re.tipocertificado}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems
+					value="#{restauranteController.listaTipocertificados}" var="t"
+					itemLabel="#{t.nombretipocertificado}" itemValue="#{t}" />
+			</p:selectOneMenu>
+			<br />
 
-			<h:outputLabel value="Distrito:" for="cboDistrito"
+
+
+			<h:outputLabel value="Distrito:ㅤ" for="cboDistrito"
 				styleClass="control-label" />
 			<p:selectOneMenu id="cboDistrito"
 				value="#{restauranteController.re.distrito}"
@@ -50,7 +52,7 @@
 			</p:selectOneMenu>
 			<br />
 
-			<h:outputLabel value="Departamento:" for="cboDepartamento"
+			<h:outputLabel value="Departamento:ㅤ" for="cboDepartamento"
 				styleClass="control-label" />
 			<p:selectOneMenu id="cboDepartamento"
 				value="#{restauranteController.re.departamento}"
@@ -60,20 +62,49 @@
 			</p:selectOneMenu>
 			<br />
 
-			<h:outputLabel value="Oferta:" for="cboOferta"
+			<h:outputLabel value="Nombre:ㅤ" for="nombrerestaurante"
 				styleClass="control-label" />
-			<p:selectOneMenu id="cboOferta"
-				value="#{restauranteController.re.oferta}"
-				converter="omnifaces.SelectItemsConverter">
-				<f:selectItems value="#{restauranteController.listaOfertas}"
-					var="p" itemLabel="#{p.nombreoferta}" itemValue="#{p}" />
+			<h:inputText value="#{restauranteController.re.nombrerestaurante}"
+				id="nombrerestaurante" styleClass="form-control" />
+
+			<h:outputLabel value="Direccion:ㅤ" for="direccionrestaurante"
+				styleClass="control-label" />
+			<h:inputText value="#{restauranteController.re.direccionrestaurante}"
+				id="direccionrestaurante" styleClass="form-control" />
+
+			<h:outputLabel value="Aforo total:ㅤ" for="aforototal"
+				styleClass="control-label" />
+			<h:inputText value="#{restauranteController.re.aforototal}"
+				id="aforototal" styleClass="form-control" />
+
+			<h:outputLabel value="Aforo actual:ㅤ" for="aforoactual"
+				styleClass="control-label" />
+			<h:inputText value="#{restauranteController.re.aforoactual}"
+				id="aforoactual" styleClass="form-control" />
+
+			<h:outputLabel value="Telefono:ㅤ" for="numerorestaurante"
+				styleClass="control-label" />
+			<h:inputText value="#{restauranteController.re.numerorestaurante}"
+				id="numerorestaurante" styleClass="form-control" />
+
+			<h:outputLabel value="Protocolo:ㅤ" for="protocolo"
+				styleClass="control-label" />
+			<h:inputText value="#{restauranteController.re.protocolo}"
+				id="protocolo" styleClass="form-control" />
+
+			<h:outputLabel value="Estado:ㅤ" for="cboEstado"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboEstado"
+				value="#{restauranteController.re.estado}">
+				<f:selectItem itemLabel="Abierto" itemValue="Abierto" />
+				<f:selectItem itemLabel="Cerrado" itemValue="Cerrado" />
 			</p:selectOneMenu>
 			<br />
-
+			<br />
 			<p:commandButton value="Grabar"
 				actionListener="#{restauranteController.insert()}"
-				action="listRestaurante?faces-redirect=true" update="@form" />
-
+				action="listRestaurante?faces-redirect=true" update="@form"
+				styleClass="btn btn-primary" />
 		</h:form>
 	</ui:define>
 </ui:composition>

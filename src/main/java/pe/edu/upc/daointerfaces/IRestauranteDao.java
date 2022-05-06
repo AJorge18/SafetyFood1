@@ -9,7 +9,8 @@ public interface IRestauranteDao {
 	public void insert(Restaurante re);
 	public List<Restaurante> list();
 	void delete(int idRestaurante);
-	
+	public void update(Restaurante re);
+	public List<Restaurante> findByName(Restaurante re);
 
 
 }

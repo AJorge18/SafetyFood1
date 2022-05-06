@@ -10,4 +10,8 @@ public interface IOfertaDao {
 	public List<Oferta> list();
 
 	public void delete(int idOferta);
+	
+	public void update(Oferta o);
+	
+
 }

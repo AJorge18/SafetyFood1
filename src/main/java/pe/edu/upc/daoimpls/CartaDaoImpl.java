@@ -21,7 +21,7 @@ public class CartaDaoImpl implements ICartaDao {
 		try {
 			em.persist(ca);
 		} catch (Exception e) {
-			System.out.println("Error al insertar en departamento dao!!");
+			System.out.println("Error al insertar en carta dao!!");
 		}
 	}
 
@@ -33,10 +33,12 @@ public class CartaDaoImpl implements ICartaDao {
 			Query jpql = em.createQuery("from Carta ca");
 			listaCartas = (List<Carta>) jpql.getResultList();
 		} catch (Exception e) {
-			System.out.println("Error al listar departamento en el dao!!");
+			System.out.println("Error al listar carta en el dao!!");
 		}
 		return listaCartas;
 	}
+	
+	
 	
 	@Transactional
 	@Override
@@ -45,9 +47,19 @@ public class CartaDaoImpl implements ICartaDao {
 			Carta car = em.find(Carta.class, idCarta);
 			em.remove(car);
 		} catch (Exception e) {
-			System.out.println("Error al eliminar en el dao de persona");
+			System.out.println("Error al eliminar en el dao de carta");
 		}
 
 	}
 
+	@Transactional
+	@Override
+	public void update(Carta ca) {
+		try {
+			em.merge(ca);
+		} catch (Exception e) {
+			System.out.println("Error al modificar carta en el dao");
+		}
+}
+	
 }

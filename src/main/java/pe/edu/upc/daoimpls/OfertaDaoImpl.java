@@ -21,7 +21,7 @@ public class OfertaDaoImpl implements IOfertaDao {
 		try {
 			em.persist(o);
 		} catch (Exception e) {
-			System.out.println("Error al insertar en departamento dao!!");
+			System.out.println("Error al insertar en oferta dao!!");
 		}
 	}
 
@@ -33,7 +33,7 @@ public class OfertaDaoImpl implements IOfertaDao {
 			Query jpql = em.createQuery("from Oferta o");
 			listaOfertas = (List<Oferta>) jpql.getResultList();
 		} catch (Exception e) {
-			System.out.println("Error al listar departamento en el dao!!");
+			System.out.println("Error al listar oferta en el dao!!");
 		}
 		return listaOfertas;
 	}
@@ -45,9 +45,20 @@ public class OfertaDaoImpl implements IOfertaDao {
 			Oferta ofe = em.find(Oferta.class, idOferta);
 			em.remove(ofe);
 		} catch (Exception e) {
-			System.out.println("Error al eliminar en el dao de persona");
+			System.out.println("Error al eliminar en el dao de oferta");
 		}
 
 	}
+	
+	@Transactional
+	@Override
+	public void update(Oferta o) {
+		try {
+			em.merge(o);
+		} catch (Exception e) {
+			System.out.println("Error al modificar oferta en el dao");
+		}
+}
+	
 
 }

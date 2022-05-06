@@ -5,28 +5,36 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="master.xhtml">
+<ui:composition template="masterrestaurante.xhtml">
+
 	<ui:define name="content">
+
 		<h2>Lista de los platillos de la carta</h2>
 		<h:form>
-			<p:dataTable id="lstCarta"
+			<p:dataTable id="lstCarta" 
 				value="#{cartaController.listaCartas}"
-				var="ca" paginator="true" paginatorPosition="top"
+				var="ca"  paginator="true" paginatorPosition="top" 
 				rowPerPageTemplate="5,10,15,20,25" rows="5" rowIndexVar="item"
-				emptyMessage="No existen personas en la base de datos!!">
+				emptyMessage="No existen platillos a la carta en la base de datos!!">
+
+
 				<p:column headerText="Id">
 					<h:outputText value="#{ca.idCarta}" />
 				</p:column>
 
-				<p:column headerText="Nombre del platillo:">
-					<h:outputText value="#{ca.nombrecarta}" />
+				<p:column headerText="Restaurante">
+					<h:outputText value="#{ca.restaurante.nombrerestaurante}" />
 				</p:column>
-				
+
+				<p:column headerText="Plato">
+					<h:outputText value="#{ca.plato.nombreplato}" />
+				</p:column>
+
 				<p:column headerText="Precio del platillo">
 					<h:outputText value="#{ca.preciocarta}" />
 				</p:column>
-				
-				<p:column headerText="Imagen del platillo">
+
+				<p:column headerText="Enlace del platillo">
 					<h:outputText value="#{ca.imagencarta}" />
 				</p:column>
 
@@ -35,6 +43,10 @@
 						actionListener="#{cartaController.delete(ca)}" />
 				</p:column>
 
+				<p:column headerText="Operación">
+					<h:commandLink action="#{cartaController.preUpdate(ca)}"
+						value="Modificar" />
+				</p:column>
 
 			</p:dataTable>
 		</h:form>

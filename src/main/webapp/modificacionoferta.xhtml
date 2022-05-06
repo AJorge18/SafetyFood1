@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/masterrestaurante.xhtml">
+	<ui:define name="content">
+		<h2>Modificar oferta</h2>
+
+		
+		<h:form>
+			<h:outputLabel value="Id" for="id" styleClass="control-label" />
+			<h:inputText value="#{ofertaController.o.idOferta}" id="id"
+				styleClass="form-control" />
+
+			<h:outputLabel value="Restaurante:ㅤ" for="cboRestaurante"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboRestaurante"
+				value="#{ofertaController.o.restaurante}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{ofertaController.listaRestaurantes}"
+					var="re" itemLabel="#{re.nombrerestaurante}" itemValue="#{re}" />
+			</p:selectOneMenu>
+			<br />
+			
+			<h:outputLabel value="Plato:ㅤ" for="cboPlato"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboPlato"
+				value="#{ofertaController.o.plato}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{ofertaController.listaPlatos}"
+					var="pl" itemLabel="#{pl.nombreplato}" itemValue="#{pl}" />
+			</p:selectOneMenu>
+			<br />
+
+			<h:outputLabel value="Precio antes: " for="precioantes"
+				styleClass="control-label" />
+			<h:inputText value="#{ofertaController.o.precioantes}"
+				id="precioantes" styleClass="form-control" />
+
+			<h:outputLabel value="Precio actual: " for="precioactual"
+				styleClass="control-label" />
+			<h:inputText value="#{ofertaController.o.precioactual}"
+				id="precioactual" styleClass="form-control" />
+
+			<h:outputLabel value="Enlace del platillo en oferta: " for="imagenoferta"
+				styleClass="control-label" />
+			<h:inputText value="#{ofertaController.o.imagenoferta}"
+				id="imagenoferta" styleClass="form-control" />
+
+			<p:commandButton value="Actualizar"
+				actionListener="#{ofertaController.update()}"
+				action="listOferta?faces-redirect=true" update="@form"
+				styleClass="btn btn-primary" />
+		</h:form>
+		
+
+	</ui:define>
+
+</ui:composition>
+</html>

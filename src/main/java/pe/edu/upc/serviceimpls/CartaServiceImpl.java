@@ -29,4 +29,11 @@ public class CartaServiceImpl implements ICartaService {
 		caDao.delete(idCarta);
 		
 	}
+	
+	@Override
+	public void update(Carta ca) {
+		// TODO Auto-generated method stub
+		caDao.update(ca);
+		
+	}
 }

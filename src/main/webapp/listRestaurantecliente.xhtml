@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/mastercliente.xhtml">
+
+	<ui:define name="content">
+
+		<h2>Lista de restaurantes</h2>
+		<h:form>
+
+			<div class="row">
+
+				<h:outputLabel value="Ingrese el nombre del restaurante a buscar: "
+					for="name" styleClass="control-label" />
+				<p:inputText id="name"
+					value="#{restauranteController.re.nombrerestaurante}" />
+				<p:commandButton value="Buscar" update="lstRestaurantes"
+					actionListener="#{restauranteController.findByName()}" />
+
+			</div>
+			<p:dataTable id="lstRestaurantes" var="res"
+				value="#{restauranteController.listaRestaurantes}" paginator="true"
+				paginatorPosition="top" rowsPerPageTemplate="5,10,15,20,25"
+				rows="10" emptyMessage="No existen registros" rowsIndexVar="item">
+
+
+				<p:column headerText="Id">
+					<h:outputText value="#{res.idRestaurante}" />
+				</p:column>
+
+				<p:column headerText="Tip restaurante">
+					<h:outputText value="#{res.tiporestaurante.tiporestaurante}" />
+				</p:column>
+
+				<p:column headerText="Certificado">
+					<h:outputText value="#{res.tipocertificado.nombretipocertificado}" />
+				</p:column>
+
+
+
+				<p:column headerText="Dist">
+					<h:outputText value="#{res.distrito.nombredistrito}" />
+				</p:column>
+
+				<p:column headerText="Depart">
+					<h:outputText value="#{res.departamento.nombredepartamento}" />
+				</p:column>
+
+
+
+				<p:column headerText="Nombre">
+					<h:outputText value="#{res.nombrerestaurante}" />
+				</p:column>
+
+				<p:column headerText="Direccion">
+					<h:outputText value="#{res.direccionrestaurante}" />
+				</p:column>
+
+				<p:column headerText="Aforo total">
+					<h:outputText value="#{res.aforototal}" />
+				</p:column>
+
+				<p:column headerText="Aforo actual">
+					<h:outputText value="#{res.aforoactual}" />
+				</p:column>
+
+				<p:column headerText="Telefono">
+					<h:outputText value="#{res.numerorestaurante}" />
+				</p:column>
+
+				<p:column headerText="Protocolo">
+					<h:outputText value="#{res.protocolo}" />
+				</p:column>
+
+				<p:column headerText="Estado">
+					<h:outputText value="#{res.estado}" />
+				</p:column>
+
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>

@@ -5,22 +5,36 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="/master.xhtml">
+<ui:composition template="/masterrestaurante.xhtml">
 	<ui:define name="content">
-		<h2>Agregar platillos a la carta</h2>
+		<h2>Registrar plato a la carta</h2>
 
-		<p:commandButton value="Ver lista de la carta del restaurante"
-			action="listCarta?faces-redirect=true"></p:commandButton>
-
+		<p:commandButton value="Ver lista de plato a la carta"
+				action="listCarta?faces-redirect=true"></p:commandButton>
 		<h:form>
 			<h:outputLabel value="Id" for="id" styleClass="control-label" />
 			<h:inputText value="#{cartaController.ca.idCarta}" id="id"
 				styleClass="form-control" />
 
-			<h:outputLabel value="Nombre del platillo:" for="nombrecarta"
+			<h:outputLabel value="Restaurante:ㅤ" for="cboRestaurante"
 				styleClass="control-label" />
-			<h:inputText value="#{cartaController.ca.nombrecarta}"
-				id="nombrecarta" styleClass="form-control" />
+			<p:selectOneMenu id="cboRestaurante"
+				value="#{cartaController.ca.restaurante}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{cartaController.listaRestaurantes}"
+					var="re" itemLabel="#{re.nombrerestaurante}" itemValue="#{re}" />
+			</p:selectOneMenu>
+			<br />
+			
+			<h:outputLabel value="Plato:ㅤ" for="cboPlato"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboPlato"
+				value="#{cartaController.ca.plato}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{platoController.listaPlatos}"
+					var="pl" itemLabel="#{pl.nombreplato}" itemValue="#{pl}" />
+			</p:selectOneMenu>
+			<br />
 
 			<h:outputLabel value="Precio del platillo:" for="preciocarta"
 				styleClass="control-label" />
@@ -36,7 +50,8 @@
 
 			<p:commandButton value="Grabar"
 				actionListener="#{cartaController.insert()}"
-				action="carta?faces-redirect=true"></p:commandButton>
+				action="listCarta?faces-redirect=true" update="@form"
+				styleClass="btn btn-primary" />
 		</h:form>
 
 	</ui:define>

@@ -10,4 +10,8 @@ public interface ICartaDao {
 	public List<Carta> list();
 
 	public void delete(int idCarta);
+	
+	public void update(Carta ca);
+	
+
 }

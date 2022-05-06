@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/masterrestaurante.xhtml">
+	<ui:define name="content">
+		<h2>Modificar plato de la carta</h2>
+
+		
+
+		<h:form>
+			<h:outputLabel value="Id" for="id" styleClass="control-label" />
+			<h:inputText value="#{cartaController.ca.idCarta}" id="id"
+				styleClass="form-control" />
+
+			<h:outputLabel value="Restaurante:ㅤ" for="cboRestaurante"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboRestaurante"
+				value="#{cartaController.ca.restaurante}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{cartaController.listaRestaurantes}"
+					var="re" itemLabel="#{re.nombrerestaurante}" itemValue="#{re}" />
+			</p:selectOneMenu>
+			<br />
+			
+			<h:outputLabel value="Plato:ㅤ" for="cboPlato"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboPlato"
+				value="#{cartaController.ca.plato}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{platoController.listaPlatos}"
+					var="pl" itemLabel="#{pl.nombreplato}" itemValue="#{pl}" />
+			</p:selectOneMenu>
+			<br />
+
+			<h:outputLabel value="Precio del platillo:" for="preciocarta"
+				styleClass="control-label" />
+			<h:inputText value="#{cartaController.ca.preciocarta}"
+				id="preciocarta" styleClass="form-control" />
+
+			<h:outputLabel value="Enlace del platillo:" for="imagencarta"
+				styleClass="control-label" />
+			<h:inputText value="#{cartaController.ca.imagencarta}"
+				id="imagencarta" styleClass="form-control" />
+
+
+
+			<p:commandButton value="Actualizar"
+				actionListener="#{cartaController.update()}"
+				action="listCarta?faces-redirect=true" update="@form"
+				styleClass="btn btn-primary" />
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+</html>

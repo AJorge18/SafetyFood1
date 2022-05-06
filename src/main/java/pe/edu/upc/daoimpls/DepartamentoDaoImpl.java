@@ -45,7 +45,7 @@ public class DepartamentoDaoImpl implements IDepartamentoDao {
 			Departamento dep = em.find(Departamento.class, idDepartamento);
 			em.remove(dep);
 		} catch (Exception e) {
-			System.out.println("Error al eliminar en el dao de persona");
+			System.out.println("Error al eliminar en el dao de departamento");
 		}
 
 	}

@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="/master.xhtml">
+<ui:composition template="/masterrestaurante.xhtml">
 
 	<ui:define name="content">
 
@@ -14,33 +14,60 @@
 			<p:dataTable id="lstRestaurantes" var="res"
 				value="#{restauranteController.listaRestaurantes}" paginator="true"
 				paginatorPosition="top" rowsPerPageTemplate="5,10,15,20,25"
-				rows="10" emptyMessage="No existen registros" rowsIndexVar="item">
+				rows="10" emptyMessage="No existen restaurantes en la base de datos" rowsIndexVar="item">
 
 
-				<p:column headerText="Codigo de Restaurante">
+				<p:column headerText="Id">
 					<h:outputText value="#{res.idRestaurante}" />
 				</p:column>
 
-				<p:column headerText="Tipo certificado">
-					<h:outputText value="#{res.tipocertificado.nombretipocertificado}" />
-				</p:column>
-
-				<p:column headerText="Tipo restaurante">
+				<p:column headerText="Tip restaurante">
 					<h:outputText value="#{res.tiporestaurante.tiporestaurante}" />
 				</p:column>
 
-				<p:column headerText="Distrito">
+				<p:column headerText="Certificado">
+					<h:outputText value="#{res.tipocertificado.nombretipocertificado}" />
+				</p:column>
+
+
+
+				<p:column headerText="Dist">
 					<h:outputText value="#{res.distrito.nombredistrito}" />
 				</p:column>
 
-				<p:column headerText="Departamento">
+				<p:column headerText="Depart">
 					<h:outputText value="#{res.departamento.nombredepartamento}" />
 				</p:column>
 
-				<p:column headerText="Oferta">
-					<h:outputText value="#{res.oferta.nombreoferta}" />
+
+
+				<p:column headerText="Nombre">
+					<h:outputText value="#{res.nombrerestaurante}" />
 				</p:column>
 
+				<p:column headerText="Direccion">
+					<h:outputText value="#{res.direccionrestaurante}" />
+				</p:column>
+
+				<p:column headerText="Aforo total">
+					<h:outputText value="#{res.aforototal}" />
+				</p:column>
+
+				<p:column headerText="Aforo actual">
+					<h:outputText value="#{res.aforoactual}" />
+				</p:column>
+
+				<p:column headerText="Telefono">
+					<h:outputText value="#{res.numerorestaurante}" />
+				</p:column>
+
+				<p:column headerText="Protocolo">
+					<h:outputText value="#{res.protocolo}" />
+				</p:column>
+
+				<p:column headerText="Estado">
+					<h:outputText value="#{res.estado}" />
+				</p:column>
 
 				<p:column headerText="Operación">
 					<h:commandLink action="listRestaurante" value="Eliminar"
@@ -49,7 +76,10 @@
 					</h:commandLink>
 				</p:column>
 
-
+				<p:column headerText="Operación">
+					<h:commandLink action="#{restauranteController.preUpdate(res)}"
+						value="Modificar" />
+				</p:column>
 
 			</p:dataTable>
 		</h:form>

@@ -21,7 +21,7 @@ public class DistritoDaoImpl implements IDistritoDao {
 		try {
 			em.persist(di);
 		} catch (Exception e) {
-			System.out.println("Error al insertar en departamento dao!!");
+			System.out.println("Error al insertar en distrito dao!!");
 		}
 	}
 
@@ -33,7 +33,7 @@ public class DistritoDaoImpl implements IDistritoDao {
 			Query jpql = em.createQuery("from Distrito di");
 			listaDistritos = (List<Distrito>) jpql.getResultList();
 		} catch (Exception e) {
-			System.out.println("Error al listar departamento en el dao!!");
+			System.out.println("Error al listar distrito en el dao!!");
 		}
 		return listaDistritos;
 	}
@@ -45,7 +45,7 @@ public class DistritoDaoImpl implements IDistritoDao {
 			Distrito dis = em.find(Distrito.class, idDistrito);
 			em.remove(dis);
 		} catch (Exception e) {
-			System.out.println("Error al eliminar en el dao de persona");
+			System.out.println("Error al eliminar en el dao de distrito");
 		}
 
 	}
