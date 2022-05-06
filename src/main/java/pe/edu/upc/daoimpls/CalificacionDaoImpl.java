@@ -12,7 +12,7 @@ import pe.edu.upc.daointerfaces.ICalificacionDao;
 import pe.edu.upc.entities.Calificacion;
 
 public class CalificacionDaoImpl implements ICalificacionDao {
-	@PersistenceContext(unitName = "demosafetyfood")
+	@PersistenceContext(unitName = "SafetyFood1")
 	private EntityManager em;
 
 	@Transactional

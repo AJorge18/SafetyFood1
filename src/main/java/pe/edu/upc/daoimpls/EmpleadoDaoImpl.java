@@ -12,7 +12,7 @@ import pe.edu.upc.daointerfaces.IEmpleadoDao;
 import pe.edu.upc.entities.Empleado;
 
 public class EmpleadoDaoImpl implements IEmpleadoDao {
-	@PersistenceContext(unitName = "demosafetyfood")
+	@PersistenceContext(unitName = "SafetyFood1")
 	private EntityManager em;
 
 	@Transactional

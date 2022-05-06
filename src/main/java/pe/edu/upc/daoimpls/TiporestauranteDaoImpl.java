@@ -12,7 +12,7 @@ import pe.edu.upc.daointerfaces.ITiporestauranteDao;
 import pe.edu.upc.entities.Tiporestaurante;
 
 public class TiporestauranteDaoImpl implements ITiporestauranteDao {
-	@PersistenceContext(unitName = "demosafetyfood")
+	@PersistenceContext(unitName = "SafetyFood1")
 	private EntityManager em;
 
 	@Transactional

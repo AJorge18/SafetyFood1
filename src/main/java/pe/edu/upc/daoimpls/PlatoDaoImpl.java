@@ -12,7 +12,7 @@ import pe.edu.upc.daointerfaces.IPlatoDao;
 import pe.edu.upc.entities.Plato;
 
 public class PlatoDaoImpl implements IPlatoDao {
-	@PersistenceContext(unitName = "demosafetyfood")
+	@PersistenceContext(unitName = "SafetyFood1")
 	private EntityManager em;
 
 	@Transactional
