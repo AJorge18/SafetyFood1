@@ -5,15 +5,16 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="masterrestaurante.xhtml">
+<ui:composition template="mastercliente.xhtml">
 	<ui:define name="content">
-		<h2>Lista de platillos en oferta</h2>
+		<h2>Lista de los platillos en oferta</h2>
 
 		<h:form>
-			<p:dataTable id="lstOferta" value="#{ofertaController.listaOfertas}"
+			<p:dataTable id="lstOferta" 
+			value="#{ofertaController.listaOfertas}"
 				var="of" paginator="true" paginatorPosition="top"
 				rowPerPageTemplate="5,10,15,20,25" rows="5" rowIndexVar="item"
-				emptyMessage="No existen platillos en la base de datos!!">
+				emptyMessage="No existen platillos en oferta en la base de datos!!">
 				<p:column headerText="Id">
 					<h:outputText value="#{of.idOferta}" />
 				</p:column>
@@ -37,17 +38,7 @@
 				<p:column headerText="Enlace del platillo en oferta">
 					<h:outputText value="#{of.imagenoferta}" />
 				</p:column>
-
-
-				<p:column headerText="Operación">
-					<h:commandLink action="listOferta" value="Eliminar"
-						actionListener="#{ofertaController.delete(of)}" />
-				</p:column>
-
-				<p:column headerText="Operación">
-					<h:commandLink action="#{ofertaController.preUpdate(of)}"
-						value="Modificar" />
-				</p:column>
+			
 
 
 			</p:dataTable>

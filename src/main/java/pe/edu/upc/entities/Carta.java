@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -15,13 +17,18 @@ public class Carta {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idCarta;
 	
-	@Column(name = "nombrecarta", nullable = false,length = 47)
-	private String nombrecarta;
+	@ManyToOne
+	@JoinColumn(name = "idPlato", nullable = false)
+	private Plato plato;
 	
-	@Column(name = "preciocarta", nullable = false,length = 47)
+	@ManyToOne
+	@JoinColumn(name = "idRestaurante", nullable = false)
+	private Restaurante restaurante;
+	
+	@Column(name = "preciocarta",  nullable = false)
 	private String preciocarta;
 	
-	@Column(name = "imagencarta", nullable = false,length = 47)
+	@Column(name = "imagencarta",  nullable = false)
 	private String imagencarta;
 
 	public Carta() {
@@ -29,10 +36,11 @@ public class Carta {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Carta(int idCarta, String nombrecarta, String preciocarta, String imagencarta) {
+	public Carta(int idCarta, Plato plato, Restaurante restaurante, String preciocarta, String imagencarta) {
 		super();
 		this.idCarta = idCarta;
-		this.nombrecarta = nombrecarta;
+		this.plato = plato;
+		this.restaurante = restaurante;
 		this.preciocarta = preciocarta;
 		this.imagencarta = imagencarta;
 
@@ -46,14 +54,22 @@ public class Carta {
 		this.idCarta = idCarta;
 	}
 
-	public String getNombrecarta() {
-		return nombrecarta;
+	public Plato getPlato() {
+		return plato;
 	}
 
-	public void setNombrecarta(String nombrecarta) {
-		this.nombrecarta = nombrecarta;
+	public void setPlato(Plato plato) {
+		this.plato = plato;
 	}
-	
+
+	public Restaurante getRestaurante() {
+		return restaurante;
+	}
+
+	public void setRestaurante(Restaurante restaurante) {
+		this.restaurante = restaurante;
+	}
+
 	public String getPreciocarta() {
 		return preciocarta;
 	}
@@ -61,7 +77,7 @@ public class Carta {
 	public void setPreciocarta(String preciocarta) {
 		this.preciocarta = preciocarta;
 	}
-	
+
 	public String getImagencarta() {
 		return imagencarta;
 	}
@@ -69,5 +85,7 @@ public class Carta {
 	public void setImagencarta(String imagencarta) {
 		this.imagencarta = imagencarta;
 	}
+
+	
 
 }

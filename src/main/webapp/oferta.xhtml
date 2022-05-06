@@ -5,11 +5,11 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="/master.xhtml">
+<ui:composition template="/masterrestaurante.xhtml">
 	<ui:define name="content">
-		<h2>Agregar oferta del menu</h2>
+		<h2>Registrar plato en oferta</h2>
 
-		<p:commandButton value="Ver lista de las ofertas"
+		<p:commandButton value="Ver lista de platos en oferta"
 			action="listOferta?faces-redirect=true"></p:commandButton>
 
 		<h:form>
@@ -17,10 +17,25 @@
 			<h:inputText value="#{ofertaController.o.idOferta}" id="id"
 				styleClass="form-control" />
 
-			<h:outputLabel value="Nombre del platillo en oferta: " for="nombre"
+			<h:outputLabel value="Restaurante:ㅤ" for="cboRestaurante"
 				styleClass="control-label" />
-			<h:inputText value="#{ofertaController.o.nombreoferta}" id="nombre"
-				styleClass="form-control" />
+			<p:selectOneMenu id="cboRestaurante"
+				value="#{ofertaController.o.restaurante}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{ofertaController.listaRestaurantes}"
+					var="re" itemLabel="#{re.nombrerestaurante}" itemValue="#{re}" />
+			</p:selectOneMenu>
+			<br />
+			
+			<h:outputLabel value="Plato:ㅤ" for="cboPlato"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboPlato"
+				value="#{ofertaController.o.plato}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{ofertaController.listaPlatos}"
+					var="pl" itemLabel="#{pl.nombreplato}" itemValue="#{pl}" />
+			</p:selectOneMenu>
+			<br />
 
 			<h:outputLabel value="Precio antes: " for="precioantes"
 				styleClass="control-label" />
@@ -32,15 +47,17 @@
 			<h:inputText value="#{ofertaController.o.precioactual}"
 				id="precioactual" styleClass="form-control" />
 
-			<h:outputLabel value="Imagen del platillo en oferta: " for="imagenoferta"
+			<h:outputLabel value="Enlace del platillo en oferta: " for="imagenoferta"
 				styleClass="control-label" />
 			<h:inputText value="#{ofertaController.o.imagenoferta}"
 				id="imagenoferta" styleClass="form-control" />
 
 			<p:commandButton value="Grabar"
 				actionListener="#{ofertaController.insert()}"
-				action="oferta?faces-redirect=true"></p:commandButton>
+				action="listOferta?faces-redirect=true" update="@form"
+				styleClass="btn btn-primary" />
 		</h:form>
+		
 
 	</ui:define>
 

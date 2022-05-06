@@ -29,4 +29,14 @@ public class OfertaServiceImpl implements IOfertaService {
 		oDao.delete(idOferta);
 		
 	}
+	
+	@Override
+	public void update(Oferta o) {
+		// TODO Auto-generated method stub
+		oDao.update(o);
+		
+	}
+	
+	
+	
 }

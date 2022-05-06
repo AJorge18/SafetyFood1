@@ -39,7 +39,7 @@ public class DistritoController {
 		try {
 			diService.insert(di);
 		} catch (Exception e) {
-			System.out.println("Error al insertar en el controller de departamento");
+			System.out.println("Error al insertar en el controller de distrito");
 		}
 
 	}
@@ -48,7 +48,7 @@ public class DistritoController {
 		try {
 			listaDistritos = diService.list();
 		} catch (Exception e) {
-			System.out.println("Error al listar en el controller de departamento");
+			System.out.println("Error al listar en el controller de distrito");
 		}
 	}
 
@@ -57,7 +57,7 @@ public class DistritoController {
 			diService.delete(dist.getIdDistrito());
 			this.list();
 		} catch (Exception e) {
-			System.out.println("Error al eliminar en el controller de persona");
+			System.out.println("Error al eliminar en el controller de distrito");
 		}
 	}
 
