@@ -5,12 +5,12 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="masterrestaurante.xhtml">
+<ui:composition template="/adminmaster.xhtml">
 	<ui:define name="content">
 		<h2>Agregar tipo de certificado</h2>
 		
-			<p:commandButton value="Ver lista de tipo de restaurante"
-				action="listTipocertificado?faces-redirect=true"></p:commandButton>
+			<p:commandButton value="Ver lista de tipo de certificado"
+				action="adminlistTipocertificado?faces-redirect=true"></p:commandButton>
 			
 		<h:form>
 			<h:outputLabel value="Id" for="id" styleClass="control-label" />
@@ -22,14 +22,14 @@
 			<h:inputText value="#{tipocertificadoController.t.tipocertificado}"
 				id="nombre" styleClass="form-control" />
 
-            <h:outputLabel value="Ingrese el enlace: " for="enlace"
+            <h:outputLabel value="Ingrese el enlace del certificado: " for="enlace"
 				styleClass="control-label" />
 			<h:inputText value="#{tipocertificadoController.t.nombretipocertificado}"
 				id="enlace" styleClass="form-control" />
 
 			<p:commandButton value="Grabar"
 				actionListener="#{tipocertificadoController.insert()}"
-				action="tipocertificado?faces-redirect=true"></p:commandButton>
+				action="admintipocertificado?faces-redirect=true"></p:commandButton>
 		</h:form>
 
 	</ui:define>

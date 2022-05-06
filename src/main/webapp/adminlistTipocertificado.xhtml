@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="masterrestaurante.xhtml">
+<ui:composition template="adminmaster.xhtml">
 	<ui:define name="content">
 		<h2>Lista de tipos de certificado</h2>
 		<h:form>
@@ -13,7 +13,7 @@
 				value="#{tipocertificadoController.listaTipocertificados}"
 				var="pe" paginator="true" paginatorPosition="top"
 				rowPerPageTemplate="5,10,15,20,25" rows="5" rowIndexVar="item"
-				emptyMessage="No existen tipo de certificado en la base de datos!!">
+				emptyMessage="No existen tipocertificado en la base de datos!!">
 				<p:column headerText="Id">
 					<h:outputText value="#{pe.idTipocertificado}" />
 				</p:column>
@@ -22,7 +22,7 @@
 					<h:outputText value="#{pe.tipocertificado}" />
 				</p:column>
 				
-					<p:column headerText="Enlace del certificado">
+					<p:column headerText="Ingrese el enlace del certificado">
 					<h:outputText value="#{pe.nombretipocertificado}" />
 				</p:column>
 

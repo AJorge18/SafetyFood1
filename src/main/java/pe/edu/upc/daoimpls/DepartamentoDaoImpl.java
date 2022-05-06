@@ -12,7 +12,7 @@ import pe.edu.upc.daointerfaces.IDepartamentoDao;
 import pe.edu.upc.entities.Departamento;
 
 public class DepartamentoDaoImpl implements IDepartamentoDao {
-	@PersistenceContext(unitName = "demosafetyfood")
+	@PersistenceContext(unitName = "SafetyFood1")
 	private EntityManager em;
 
 	@Transactional

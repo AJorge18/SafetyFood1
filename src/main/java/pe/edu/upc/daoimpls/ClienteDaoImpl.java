@@ -12,7 +12,7 @@ import pe.edu.upc.daointerfaces.IClienteDao;
 import pe.edu.upc.entities.Cliente;
 
 public class ClienteDaoImpl implements IClienteDao {
-	@PersistenceContext(unitName = "demosafetyfood")
+	@PersistenceContext(unitName = "SafetyFood1")
 	private EntityManager em;
 
 	@Transactional
