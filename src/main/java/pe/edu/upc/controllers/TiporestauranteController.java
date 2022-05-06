@@ -39,7 +39,7 @@ public class TiporestauranteController {
 		try {
 			trService.insert(tr);
 		} catch (Exception e) {
-			System.out.println("Error al insertar en el controller de tipo");
+			System.out.println("Error al insertar en el controller de tiporestaurante");
 		}
 
 	}
@@ -48,7 +48,7 @@ public class TiporestauranteController {
 		try {
 			listaTiporestaurantes = trService.list();
 		} catch (Exception e) {
-			System.out.println("Error al listar en el controller de tipo");
+			System.out.println("Error al listar en el controller de tiporestaurante");
 		}
 	}
 
@@ -57,7 +57,7 @@ public class TiporestauranteController {
 			trService.delete(ters.getIdTiporestaurante());
 			this.list();
 		} catch (Exception e) {
-			System.out.println("Error al eliminar en el controller de persona");
+			System.out.println("Error al eliminar en el controller de tiporestaurante");
 		}
 	}
 
