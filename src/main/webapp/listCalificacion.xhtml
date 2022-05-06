@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="mastercliente.xhtml">
+	<ui:define name="content">
+		<h2>Lista de calificacion de restaurante</h2>
+
+		<h:form>
+			<p:dataTable id="lstCalificacion" value="#{calificacionController.listaCalificacions}"
+				var="li" paginator="true" paginatorPosition="top"
+				rowPerPageTemplate="5,10,15,20,25" rows="5" rowIndexVar="item"
+				emptyMessage="No existen calificaciones del restaurante en la base de datos!!">
+				<p:column headerText="Id">
+					<h:outputText value="#{li.idCalificacion}" />
+				</p:column>
+
+				<p:column headerText="Restaurante">
+					<h:outputText value="#{li.restaurante.nombrerestaurante}" />
+				</p:column>
+
+				<p:column headerText="Cliente">
+					<h:outputText value="#{li.cliente.nombrecliente}" />
+				</p:column>
+
+				<p:column headerText="Puntuacion">
+					<h:outputText value="#{li.puntuacion}" />
+				</p:column>
+
+				<p:column headerText="Resena">
+					<h:outputText value="#{li.resena}" />
+				</p:column>
+
+			
+
+
+				<p:column headerText="Operación">
+					<h:commandLink action="listCalificacion" value="Eliminar"
+						actionListener="#{calificacionController.delete(li)}" />
+				</p:column>
+
+				<p:column headerText="Operación">
+					<h:commandLink action="#{calificacionController.preUpdate(li)}"
+						value="Modificar" />
+				</p:column>
+
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

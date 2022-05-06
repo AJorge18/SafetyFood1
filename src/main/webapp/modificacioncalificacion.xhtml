@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="mastercliente.xhtml">
+	<ui:define name="content">
+		<h2>Modificar calificacion del restaurante</h2>
+
+		
+		<h:form>
+			<h:outputLabel value="Id" for="id" styleClass="control-label" />
+			<h:inputText value="#{calificacionController.li.idCalificacion}"
+				id="id" styleClass="form-control" />
+
+			<h:outputLabel value="Restaurante:ㅤ" for="cboRestaurante"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboRestaurante"
+				value="#{calificacionController.li.restaurante}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{calificacionController.listaRestaurantes}"
+					var="re" itemLabel="#{re.nombrerestaurante}" itemValue="#{re}" />
+			</p:selectOneMenu>
+			<br />
+
+			<h:outputLabel value="Cliente:ㅤ" for="cboCliente"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboCliente"
+				value="#{calificacionController.li.cliente}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{calificacionController.listaClientes}"
+					var="cl" itemLabel="#{cl.nombrecliente}" itemValue="#{cl}" />
+			</p:selectOneMenu>
+			<br />
+
+			<h:outputLabel value="Puntuacion: " for="puntuacion"
+				styleClass="control-label" />
+			<h:inputText value="#{calificacionController.li.puntuacion}"
+				id="puntuacion" styleClass="form-control" />
+
+			<h:outputLabel value="Resena: " for="resena"
+				styleClass="control-label" />
+			<h:inputText value="#{calificacionController.li.resena}" id="resena"
+				styleClass="form-control" />
+
+		
+
+		
+
+			<p:commandButton value="Actualizar"
+				actionListener="#{calificacionController.update()}"
+				action="listCalificacion?faces-redirect=true" update="@form"
+				styleClass="btn btn-primary" />
+		</h:form>
+
+
+	</ui:define>
+
+</ui:composition>
+</html>
