@@ -35,7 +35,18 @@ public class RestauranteServiceImpl implements IRestauranteService{
 	}
 
 	
-	
+	@Override
+	public void update(Restaurante re) {
+		// TODO Auto-generated method stub
+		reDao.update(re);
+		
+	}
+
+	@Override
+	public List<Restaurante> findByName(Restaurante re) {
+		// TODO Auto-generated method stub
+				return reDao.findByName(re);
+	}
 	
 
 }

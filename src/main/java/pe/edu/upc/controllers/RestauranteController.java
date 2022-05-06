@@ -79,7 +79,7 @@ public class RestauranteController {
 		try {
 			reService.insert(re);
 		} catch (Exception e) {
-			System.out.println("Error al insertar en el controlador de vacunacion");
+			System.out.println("Error al insertar en el controlador de restaurante");
 		}
 	}
 
@@ -87,7 +87,7 @@ public class RestauranteController {
 		try {
 			listaRestaurantes = reService.list();
 		} catch (Exception e) {
-			System.out.println("Error al listar en controlador de vacunacion");
+			System.out.println("Error al listar en controlador de restaurante");
 		}
 	}
 
@@ -95,7 +95,7 @@ public class RestauranteController {
 		try {
 			listaTipocertificados = tService.list();
 		} catch (Exception e) {
-			System.out.println("Error al listar personas en controlador de vacunacion");
+			System.out.println("Error al listar tipocertificado en controlador de restaurante");
 		}
 
 	}
@@ -104,7 +104,7 @@ public class RestauranteController {
 		try {
 			listaTiporestaurantes = trService.list();
 		} catch (Exception e) {
-			System.out.println("Error al listar vacunas en controlador de Vaccination");
+			System.out.println("Error al listar tiporestaurantes en controlador de restaurante");
 		}
 
 	}
@@ -113,7 +113,7 @@ public class RestauranteController {
 		try {
 			listaDistritos = diService.list();
 		} catch (Exception e) {
-			System.out.println("Error al listar vacunas en controlador de Vaccination");
+			System.out.println("Error al listar distrito en controlador de restaurante");
 		}
 
 	}
@@ -122,7 +122,7 @@ public class RestauranteController {
 		try {
 			listaDepartamentos = deService.list();
 		} catch (Exception e) {
-			System.out.println("Error al listar vacunas en controlador de Vaccination");
+			System.out.println("Error al listar departamento en controlador de restaurante");
 		}
 
 	}
@@ -131,7 +131,7 @@ public class RestauranteController {
 		try {
 			listaOfertas = oService.list();
 		} catch (Exception e) {
-			System.out.println("Error al listar vacunas en controlador de Vaccination");
+			System.out.println("Error al listar ofertas en controlador de restaurante");
 		}
 
 	}
@@ -141,9 +141,32 @@ public class RestauranteController {
 			reService.delete(re.getIdRestaurante());
 			this.list();
 		} catch (Exception e) {
-			System.out.println("Error al eliminar en el controlador de vacunation");
+			System.out.println("Error al eliminar en el controlador de restaurante");
 		}
 	}
+	// Buscar
+		public void findByName() {
+			try {
+				listaRestaurantes = reService.findByName(this.getRe());
+			} catch (Exception e) {
+				System.out.println("Error al buscar en el controller de restaurante");
+			}
+		}
+	
+	//update
+		public String preUpdate(Restaurante re) {
+			this.setRe(re);
+			return "modificacionrestaurante.xhtml";
+		}
+		
+		public void update() {
+			
+			try {
+				reService.update(this.re);
+			} catch (Exception e) {
+				System.out.println("Error al modificar el controlador de restaurante");
+			}
+		}
 	
 
 	/// getter

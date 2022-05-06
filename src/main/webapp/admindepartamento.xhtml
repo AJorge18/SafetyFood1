@@ -5,12 +5,12 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="/master2.xhtml">
+<ui:composition template="/adminmaster.xhtml">
 	<ui:define name="content">
 		<h2>Agregar departamento</h2>
 		
 			<p:commandButton value="Ver lista de departamentos"
-				action="listDepartamento?faces-redirect=true"></p:commandButton>
+				action="adminlistDepartamento?faces-redirect=true"></p:commandButton>
 				
 		<h:form>
 			<h:outputLabel value="Id" for="id" styleClass="control-label" />
@@ -24,7 +24,7 @@
 
 			<p:commandButton value="Grabar"
 				actionListener="#{departamentoController.insert()}"
-				action="departamento?faces-redirect=true"></p:commandButton>
+				action="admindepartamento?faces-redirect=true"></p:commandButton>
 		</h:form>
 
 	</ui:define>

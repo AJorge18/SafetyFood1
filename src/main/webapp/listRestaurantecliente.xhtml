@@ -5,16 +5,27 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="/masterrestaurante.xhtml">
+<ui:composition template="/mastercliente.xhtml">
 
 	<ui:define name="content">
 
 		<h2>Lista de restaurantes</h2>
 		<h:form>
+
+			<div class="row">
+
+				<h:outputLabel value="Ingrese el nombre del restaurante a buscar: "
+					for="name" styleClass="control-label" />
+				<p:inputText id="name"
+					value="#{restauranteController.re.nombrerestaurante}" />
+				<p:commandButton value="Buscar" update="lstRestaurantes"
+					actionListener="#{restauranteController.findByName()}" />
+
+			</div>
 			<p:dataTable id="lstRestaurantes" var="res"
 				value="#{restauranteController.listaRestaurantes}" paginator="true"
 				paginatorPosition="top" rowsPerPageTemplate="5,10,15,20,25"
-				rows="10" emptyMessage="No existen restaurantes en la base de datos" rowsIndexVar="item">
+				rows="10" emptyMessage="No existen registros" rowsIndexVar="item">
 
 
 				<p:column headerText="Id">
@@ -69,17 +80,6 @@
 					<h:outputText value="#{res.estado}" />
 				</p:column>
 
-				<p:column headerText="Operación">
-					<h:commandLink action="listRestaurante" value="Eliminar"
-						actionListener="#{restauranteController.delete(res)}">
-
-					</h:commandLink>
-				</p:column>
-
-				<p:column headerText="Operación">
-					<h:commandLink action="#{restauranteController.preUpdate(res)}"
-						value="Modificar" />
-				</p:column>
 
 			</p:dataTable>
 		</h:form>
