@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<ui:composition template="masterrestaurante.xhtml">
+<ui:composition template="mastercliente.xhtml">
 
 	<ui:define name="content">
 
@@ -15,7 +15,7 @@
 				value="#{cartaController.listaCartas}"
 				var="ca"  paginator="true" paginatorPosition="top" 
 				rowPerPageTemplate="5,10,15,20,25" rows="5" rowIndexVar="item"
-				emptyMessage="No existen platillos a la carta en la base de datos!!">
+				emptyMessage="No existen platillos de la carta en la base de datos!!">
 
 
 				<p:column headerText="Id">
@@ -38,15 +38,7 @@
 					<h:outputText value="#{ca.imagencarta}" />
 				</p:column>
 
-				<p:column headerText="Operación">
-					<h:commandLink action="listCarta" value="Eliminar"
-						actionListener="#{cartaController.delete(ca)}" />
-				</p:column>
-
-				<p:column headerText="Operación">
-					<h:commandLink action="#{cartaController.preUpdate(ca)}"
-						value="Modificar" />
-				</p:column>
+				
 
 			</p:dataTable>
 		</h:form>

@@ -9,5 +9,9 @@ public interface IOfertaService {
 
 	public List<Oferta> list();
 	
+	
+	
 	public void delete(int idOferta );
+	
+	public void update(Oferta o);
 }

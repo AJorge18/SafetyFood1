@@ -9,7 +9,11 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import pe.edu.upc.entities.Carta;
+import pe.edu.upc.entities.Restaurante;
+import pe.edu.upc.entities.Plato;
 import pe.edu.upc.serviceinterfaces.ICartaService;
+import pe.edu.upc.serviceinterfaces.IRestauranteService;
+import pe.edu.upc.serviceinterfaces.IPlatoService;
 
 @Named
 @RequestScoped
@@ -18,15 +22,28 @@ public class CartaController {
 	@Inject
 	private ICartaService caService;
 
+	@Inject
+	private IPlatoService plService;
+
+	@Inject
+	private IRestauranteService reService;
+
 	// variables
 	private Carta ca;
 	List<Carta> listaCartas;
+	List<Plato> listaPlatos;
+	List<Restaurante> listaRestaurantes;
 
 	// Constructor
 	@PostConstruct
 	public void init() {
 		this.listaCartas = new ArrayList<Carta>();
 		this.ca = new Carta();
+		this.listaPlatos = new ArrayList<Plato>();
+		this.listaRestaurantes = new ArrayList<Restaurante>();
+
+		this.listPlatos();
+		this.listRestaurantes();
 		this.list();
 	}
 
@@ -39,7 +56,7 @@ public class CartaController {
 		try {
 			caService.insert(ca);
 		} catch (Exception e) {
-			System.out.println("Error al insertar en el controller de departamento");
+			System.out.println("Error al insertar en el controller de carta");
 		}
 
 	}
@@ -48,8 +65,26 @@ public class CartaController {
 		try {
 			listaCartas = caService.list();
 		} catch (Exception e) {
-			System.out.println("Error al listar en el controller de departamento");
+			System.out.println("Error al listar en el controller de carta");
 		}
+	}
+
+	public void listPlatos() {
+		try {
+			listaPlatos = plService.list();
+		} catch (Exception e) {
+			System.out.println("Error al listar platos en controlador de carta");
+		}
+
+	}
+
+	public void listRestaurantes() {
+		try {
+			listaRestaurantes = reService.list();
+		} catch (Exception e) {
+			System.out.println("Error al listar restaurantes en controlador de carta");
+		}
+
 	}
 
 	public void delete(Carta cart) {
@@ -57,7 +92,23 @@ public class CartaController {
 			caService.delete(cart.getIdCarta());
 			this.list();
 		} catch (Exception e) {
-			System.out.println("Error al eliminar en el controller de persona");
+			System.out.println("Error al eliminar en el controller de carta");
+		}
+	}
+
+	
+	// update
+	public String preUpdate(Carta ca) {
+		this.setCa(ca);
+		return "modificacioncarta.xhtml";
+	}
+
+	public void update() {
+
+		try {
+			caService.update(this.ca);
+		} catch (Exception e) {
+			System.out.println("Error al modificar el controlador de Carta");
 		}
 	}
 
@@ -77,4 +128,20 @@ public class CartaController {
 		this.listaCartas = listaCartas;
 	}
 
+	public List<Plato> getListaPlatos() {
+		return listaPlatos;
+	}
+
+	public void setListaPlatos(List<Plato> listaPlatos) {
+		this.listaPlatos = listaPlatos;
+	}
+	
+	public List<Restaurante> getListaRestaurantes() {
+		return listaRestaurantes;
+	}
+
+	public void setListaRestaurantes(List<Restaurante> listaRestaurantes) {
+		this.listaRestaurantes = listaRestaurantes;
+	}
+	
 }

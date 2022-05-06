@@ -1,12 +1,14 @@
 package pe.edu.upc.entities;
 
-import java.util.Objects;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,16 +19,21 @@ public class Oferta {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idOferta;
 	
-	@Column(name = "nombreoferta", nullable = false,length = 47)
-	private String nombreoferta;
+	@ManyToOne
+	@JoinColumn(name = "idPlato", nullable = false)
+	private Plato plato;
 	
-	@Column(name = "precioantes", nullable = false,length = 46)
+	@ManyToOne
+	@JoinColumn(name = "idRestaurante", nullable = false)
+	private Restaurante restaurante;
+	
+	@Column(name = "precioantes", nullable = false)
 	private String precioantes;
 	
-	@Column(name = "precioactual", nullable = false,length = 45)
+	@Column(name = "precioactual", nullable = false)
 	private String precioactual;
 	
-	@Column(name = "imagenoferta", nullable = false,length = 44)
+	@Column(name = "imagenoferta",  nullable = false)
 	private String imagenoferta;
 	
 
@@ -37,10 +44,11 @@ public class Oferta {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Oferta(int idOferta, String nombreoferta, String precioantes, String precioactual, String imagenoferta) {
+	public Oferta(int idOferta, Plato plato, Restaurante restaurante, String precioantes, String precioactual, String imagenoferta) {
 		super();
 		this.idOferta = idOferta;
-		this.nombreoferta = nombreoferta;
+		this.plato = plato;
+		this.restaurante = restaurante;
 		this.precioantes = precioantes;
 		this.precioactual = precioactual;
 		this.imagenoferta = imagenoferta;
@@ -56,13 +64,22 @@ public class Oferta {
 		this.idOferta = idOferta;
 	}
 
-	public String getNombreoferta() {
-		return nombreoferta;
+	public Plato getPlato() {
+		return plato;
 	}
 
-	public void setNombreoferta(String nombreoferta) {
-		this.nombreoferta = nombreoferta;
+	public void setPlato(Plato plato) {
+		this.plato = plato;
 	}
+
+	public Restaurante getRestaurante() {
+		return restaurante;
+	}
+
+	public void setRestaurante(Restaurante restaurante) {
+		this.restaurante = restaurante;
+	}
+
 	
 	public String getPrecioantes() {
 		return precioantes;
@@ -88,22 +105,6 @@ public class Oferta {
 		this.imagenoferta = imagenoferta;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(idOferta);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Oferta other = (Oferta) obj;
-		return idOferta == other.idOferta;
-	}
 	
 
 
