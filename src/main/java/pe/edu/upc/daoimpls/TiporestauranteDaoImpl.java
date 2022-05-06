@@ -12,7 +12,7 @@ import pe.edu.upc.daointerfaces.ITiporestauranteDao;
 import pe.edu.upc.entities.Tiporestaurante;
 
 public class TiporestauranteDaoImpl implements ITiporestauranteDao {
-	@PersistenceContext(unitName = "SafetyFood1")
+	@PersistenceContext(unitName = "demosafetyfood")
 	private EntityManager em;
 
 	@Transactional
@@ -21,7 +21,7 @@ public class TiporestauranteDaoImpl implements ITiporestauranteDao {
 		try {
 			em.persist(tr);
 		} catch (Exception e) {
-			System.out.println("Error al insertar en tipo dao!!");
+			System.out.println("Error al insertar en tiporestaurante dao!!");
 		}
 	}
 
@@ -33,7 +33,7 @@ public class TiporestauranteDaoImpl implements ITiporestauranteDao {
 			listaTiporestaurantes = (List<Tiporestaurante>) jpql.getResultList();
 
 		} catch (Exception e) {
-			System.out.println("Error al listar tipo en el dao!!");
+			System.out.println("Error al listar tiporestaurante en el dao!!");
 		}
 		return listaTiporestaurantes;
 	}
@@ -45,7 +45,7 @@ public class TiporestauranteDaoImpl implements ITiporestauranteDao {
 			Tiporestaurante ter = em.find(Tiporestaurante.class, idTiporestaurante);
 			em.remove(ter);
 		} catch (Exception e) {
-			System.out.println("Error al eliminar en el dao de persona");
+			System.out.println("Error al eliminar en el dao de tiporestaurante");
 		}
 
 	}

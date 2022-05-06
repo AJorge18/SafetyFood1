@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="masterrestaurante.xhtml">
+	<ui:define name="content">
+		<h2>Lista de empleados</h2>
+
+		<h:form>
+			<p:dataTable id="lstEmpleados" value="#{empleadoController.listaEmpleados}"
+				var="epl" paginator="true" paginatorPosition="top"
+				rowPerPageTemplate="5,10,15,20,25" rows="5" rowIndexVar="item"
+				emptyMessage="No existen empleados en la base de datos!!">
+				
+								
+				
+				
+				<p:column headerText="Id">
+					<h:outputText value="#{epl.idEmpleado}" />
+				</p:column>
+
+				<p:column headerText="Restaurante">
+					<h:outputText value="#{epl.restaurante.nombrerestaurante}" />
+				</p:column>
+
+				<p:column headerText="Certificado">
+					<h:outputText value="#{epl.tipocertificado.nombretipocertificado}" />
+				</p:column>
+
+				<p:column headerText="Nombre">
+					<h:outputText value="#{epl.nombreempleado}" />
+				</p:column>
+
+				<p:column headerText="Apellido">
+					<h:outputText value="#{epl.apellidoempleado}" />
+				</p:column>
+
+			<p:column headerText="Dni">
+					<h:outputText value="#{epl.dniempleado}" />
+				</p:column>
+			
+			<p:column headerText="Correo">
+					<h:outputText value="#{epl.correoempleado}" />
+				</p:column>
+				<p:column headerText="Operación">
+					<h:commandLink action="listEmpleado" value="Eliminar"
+						actionListener="#{empleadoController.delete(epl)}" />
+				</p:column>
+
+				<p:column headerText="Operación">
+					<h:commandLink action="#{empleadoController.preUpdate(epl)}"
+						value="Modificar" />
+				</p:column>
+			
+			
+
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
